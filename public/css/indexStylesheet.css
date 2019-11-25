@@ -1,0 +1,36 @@
+.header {
+    color: #b30000;
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 20%;
+}
+
+.h_right {
+    color: #b30000;
+    float: right;
+}
+
+.h_img {
+    float:left;
+}
+
+.btn-txt {
+    color: #b30000;
+}
+
+.line {
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+nav a {
+    margin-left: 3%;
+    color: #b30000;
+}
+
+nav a.active {
+    font-weight: bold;
+}
+.container{
+    border:1px solid black;
+}
