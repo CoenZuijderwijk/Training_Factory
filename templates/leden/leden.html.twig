@@ -21,7 +21,7 @@
 
 
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,12 +53,15 @@
         <div class="col-4">
             <img class="img-fluid" src="{{ asset('img/image.png') }}">
         </div>
+    </div>
         {% block body %}{% endblock %}
-        <footer class=" f_collor page-footer font-small blue">
+
+    <footer class=" f_collor page-footer font-small blue">
             <div class="text-center f_text"> Training Centrum Den Haag 010 519 0532 </div>
             <div class="text-center text-light "> Developed bij Coen Zuijderwijk</div>
 
         </footer>
         {% block javascripts %}{% endblock %}
-        </body>
+</div>
+    </body>
 </html>

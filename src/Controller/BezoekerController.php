@@ -31,10 +31,19 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/leden/home"
+     * @Route("/leden/home")
      */
     public function ledenhomepage() {
         return $this->render('leden/index.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/bezoekers/trainings_aanbod")
+     */
+    public function trainings_aanbod() {
+        return $this->render('bezoekers/trainings_aanbod.html.twig', [
 
         ]);
     }
