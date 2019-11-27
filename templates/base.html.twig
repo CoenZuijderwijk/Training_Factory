@@ -3,22 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Training Centrum Den Haag{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/indexStylesheet.css') }}">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <header>
-            <div class="container"></div>
-            <img class="h_img" src="{{ asset('img/image.png') }}">
-            <p class="h_right">Welkom H Puf<br> - klant - <br> <button class="btn btn-txt"> uitloggen</button></p>
-            <p class="header"> Training Centrum</p>
-            <p class="header">Den Haag</p>
-            <div class="line" style="    border-bottom:2px solid #b30000;">
-            </div>
-        </header>
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

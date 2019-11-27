@@ -16,7 +16,7 @@ class ArticleController extends AbstractController
      */
 
     public function homepage() {
-        return $this->render('homepage/index.html.twig', [
+        return $this->render('bezoekers/index.html.twig', [
 
         ]);
     }
@@ -27,6 +27,15 @@ class ArticleController extends AbstractController
     {
         return $this->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),
+        ]);
+    }
+
+    /**
+     * @Route("/leden/home"
+     */
+    public function ledenhomepage() {
+        return $this->render('leden/index.html.twig', [
+
         ]);
     }
 

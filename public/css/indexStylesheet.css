@@ -31,6 +31,26 @@ nav a {
 nav a.active {
     font-weight: bold;
 }
-.container{
+#container{
     border:1px solid black;
+}
+
+.p_text {
+    color: #b30000;
+    font-weight: bold;
+}
+
+nav ul li {
+    margin-left: 15%;
+}
+
+.f_collor {
+    margin-top: 3%;
+    background-color: #004d4d;
+}
+
+.f_text {
+    font-weight: bold;
+    font-size: 25px;
+    color: #b30000;
 }

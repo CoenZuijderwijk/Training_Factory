@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Training Centrum Den Haag{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/indexStylesheet.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <img class="h_img img-fluid" src="{{ asset('img/image.png') }}">
+        <p class="h_right">Welkom H Puf<br> - klant - <br> <button class="btn btn-txt"> uitloggen</button></p>
+        <p class="header"> Training Centrum</p>
+        <p class="header">Den Haag</p>
+        <div class="line" style="    border-bottom:2px solid #b30000;">
+        </div>
+    </header>
+
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Inschrijven&#160;op&#160;les</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Overzicht&#160;inschrijvingen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gegevens&#160;lid&#160;wijzigen</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+</body>
+<div class="container" id="container">
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+        <div class="col-4">
+            <img class="img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+        <div class="col-4">
+            <img class="img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+{% block body %}{% endblock %}
+        <footer class=" f_collor page-footer font-small blue">
+            <div class="text-center f_text"> Training Centrum Den Haag 010 519 0532 </div>
+            <div class="text-center text-light "> Developed bij Coen Zuijderwijk</div>
+
+        </footer>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
