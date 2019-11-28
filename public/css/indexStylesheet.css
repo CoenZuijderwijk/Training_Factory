@@ -11,7 +11,7 @@
 }
 
 .h_img {
-    float:left;
+    float: left;
 }
 
 .btn-txt {
@@ -31,8 +31,9 @@ nav a {
 nav a.active {
     font-weight: bold;
 }
-#container{
-    border:1px solid black;
+
+#container {
+    border: 1px solid black;
 }
 
 .p_text {
@@ -52,5 +53,24 @@ nav ul li {
 .f_text {
     font-weight: bold;
     font-size: 25px;
+    color: #b30000;
+}
+
+.text {
+    color: #b30000;
+}
+
+.text_bold {
+    color: #b30000;
+    font-weight: bold;
+}
+
+.t_aanbod {
+    color: #b30000;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.ta_desc {
     color: #b30000;
 }

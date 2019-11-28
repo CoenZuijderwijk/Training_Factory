@@ -1,0 +1,34 @@
+{% extends 'bezoekers/bezoekers.html.twig' %}
+{% block title %} Training Centrum Den Haag {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 ">
+            <p class="t_aanbod text-center">Trainings aanbod</p>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4">
+            <img  style="padding: 1%;" class="float-left img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+        <div class="col-8">
+            <p class="p_text"> KickBox training</p>
+            <p class="ta_desc">Beschrijving over Kickbox training</p>
+        </div>
+        <div class="col-4">
+            <img style="padding: 1%;" class="float-left img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+        <div class="col-8">
+            <p class="p_text"> Stootzak training</p>
+            <p class="ta_desc">Beschrijving over Stootzak training</p>
+        </div>
+        <div class="col-4">
+            <img style="padding: 1%;" class="float-left img-fluid" src="{{ asset('img/image.png') }}">
+        </div>
+        <div class="col-8">
+            <p class="p_text"> MMA</p>
+            <p class="ta_desc">Beschrijving over MMA</p>
+        </div>
+
+    </div>
+    </div>
+{% endblock %}
