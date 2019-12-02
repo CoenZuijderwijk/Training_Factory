@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Persoon;
+use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use App\Entity\task;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,32 +28,36 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/forms/test")
+     * @Route("/bezoekers/inschrijven")
      */
 
-    public function test(Request $request)
+    public function Inschrijven(Request $request)
     {
         // just setup a fresh $task object (remove the example data)
-        $task = new task();
+        $person = new Persoon();
 
-        $form = $this->createForm(TaskType::class, $task);
+        $form = $this->createForm(PersoonType::class, $person);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $task = $form->getData();
-
+            $person = $form->getData();
+            // $task->setLoginnaam
+            $persoon=$form->getData();
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($persoon);
+            $em->flush();
+            $this->addFlash('succes', 'persoon toegevoegd');
             // ... perform some action, such as saving the task to the database
             // for example, if task is a Doctrine entity, save it!
             // $entityManager = $this->getDoctrine()->getManager();
             // $entityManager->persist($task);
             // $entityManager->flush();
 
-            return $this->redirectToRoute('/forms/test');
         }
 
-        return $this->render('task/new.html.twig', [
+        return $this->render('/bezoekers/Inschrijven.html.twig', [
             'form' => $form->createView(),
         ]);
     }

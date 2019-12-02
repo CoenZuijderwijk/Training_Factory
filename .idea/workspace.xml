@@ -2,31 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c6108b4-aa4d-429f-86fb-e7233d874d83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/test/validator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/task.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/Type/TaskType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/task/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Lesson.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Persoon.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Registration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Training.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/Type/PersoonType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191202110851.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191202111213.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191202111731.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/LessonRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PersoonRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/TrainingRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Training_Factory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Training_Factory.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/indexStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/indexStylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/task.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Type/TaskType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/bezoekers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/bezoekers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/locatie_contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/locatie_contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/trainings_aanbod.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/trainings_aanbod.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/task/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/Inschrijven.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +110,25 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Ty66pPZZKlLpjbx27zNhZiGGW9" />
@@ -113,17 +139,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Training_Factory\templates\bezoekers" />
+      <recent name="C:\xampp\htdocs\Training_Factory\templates\leden" />
       <recent name="C:\xampp\htdocs\Training_Factory\templates" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Training_Factory\templates\leden" />
-      <recent name="C:\xampp\htdocs\Training_Factory\templates\bezoekers" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Training_Factory\templates" />
     </key>
   </component>
@@ -157,6 +183,8 @@
       <workItem from="1574935518182" duration="795000" />
       <workItem from="1574936500838" duration="42000" />
       <workItem from="1574936607965" duration="9052000" />
+      <workItem from="1575012346174" duration="5454000" />
+      <workItem from="1575281114576" duration="5862000" />
     </task>
     <servers />
   </component>

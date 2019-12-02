@@ -4,6 +4,10 @@
 namespace App\Controller;
 
 
+use App\Entity\Persoon;
+use App\Entity\task;
+use App\Form\Type\TaskType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,12 +35,13 @@ class BezoekerController extends AbstractController
     }
 
     /**
-     * @Route("/bezoekers/contact")
+     * @Route("/bezoekers/contact", name="einde")
      */
     public function locatie_contact() {
         return $this->render('bezoekers/locatie_contact.html.twig', [
 
         ]);
     }
+
 
 }
