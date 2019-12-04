@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BezoekerController extends AbstractController
 {
+    //route voor de standaard homepagina
     /**
      * @Route("/")
      */
@@ -25,6 +26,7 @@ class BezoekerController extends AbstractController
         ]);
     }
 
+    //route voor het trainings aanbod
     /**
      * @Route("/bezoekers/trainings_aanbod")
      */
@@ -34,11 +36,22 @@ class BezoekerController extends AbstractController
         ]);
     }
 
+    //route om contact op te nemen
     /**
      * @Route("/bezoekers/contact", name="einde")
      */
     public function locatie_contact() {
         return $this->render('bezoekers/locatie_contact.html.twig', [
+
+        ]);
+    }
+
+    //route om de gedrags regels te zien
+    /**
+     * @Route("/bezoekers/gedrags_regels")
+     */
+    public function gedrags_regels() {
+        return $this->render('bezoekers/gedrags_regels.html.twig', [
 
         ]);
     }

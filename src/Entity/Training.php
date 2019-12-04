@@ -24,17 +24,17 @@ class Training
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $descripion;
+    private $beschrijving;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $duration;
+    private $duur;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $costs;
+    private $kosten;
 
     public function getId(): ?int
     {
@@ -53,38 +53,38 @@ class Training
         return $this;
     }
 
-    public function getDescripion(): ?string
+    public function getBeschrijving(): ?string
     {
-        return $this->descripion;
+        return $this->beschrijving;
     }
 
-    public function setDescripion(string $descripion): self
+    public function setBeschrijving(string $beschrijving): self
     {
-        $this->descripion = $descripion;
+        $this->beschrijving = $beschrijving;
 
         return $this;
     }
 
-    public function getDuration(): ?\DateTimeInterface
+    public function getDuur(): ?\DateTimeInterface
     {
-        return $this->duration;
+        return $this->duur;
     }
 
-    public function setDuration(\DateTimeInterface $duration): self
+    public function setDuur(\DateTimeInterface $duur): self
     {
-        $this->duration = $duration;
+        $this->duur = $duur;
 
         return $this;
     }
 
-    public function getCosts(): ?string
+    public function getKosten(): ?string
     {
-        return $this->costs;
+        return $this->kosten;
     }
 
-    public function setCosts(?string $costs): self
+    public function setKosten(?string $kosten): self
     {
-        $this->costs = $costs;
+        $this->kosten = $kosten;
 
         return $this;
     }

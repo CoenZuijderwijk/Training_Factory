@@ -75,5 +75,11 @@ nav ul li {
     color: #b30000;
 }
 
-.f_reg {
+#t_o {
+    color: #b30000;
+    font-weight: bold;
+}
+
+.m_auto {
+    margin: auto;
 }

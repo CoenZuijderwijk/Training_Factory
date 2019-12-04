@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class LedenController extends AbstractController
 {
 
-
+// route voor de homepagina van de leden
     /**
      * @Route("/leden/home")
      */

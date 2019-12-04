@@ -3,6 +3,27 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
+            <p class="p_text text-center">Locatie</p>
+        </div>
+        <div class="col-12">
+        <div id="map"></div>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                var uluru = {lat: 52.044553, lng: 4.250076};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: uluru, map: map});
+            }
+        </script>
+        </div>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdix4gf-TfQDx7mkIu24wOxhTINcmF7BQ&callback=initMap">
+        </script>
+        <div class="col-12">
             <p class="p_text text-center">Contact</p>
         </div>
         <div class="col-12">
