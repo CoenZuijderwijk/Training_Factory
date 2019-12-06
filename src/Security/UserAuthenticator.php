@@ -50,6 +50,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
             'wachtwoord' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
+
         $request->getSession()->set(
             Security::LAST_USERNAME,
             $credentials['username']
@@ -79,8 +80,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('homepagina'));
     }
 
     protected function getLoginUrl()

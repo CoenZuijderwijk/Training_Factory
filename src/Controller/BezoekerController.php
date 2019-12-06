@@ -20,7 +20,7 @@ class BezoekerController extends AbstractController
 {
     //route voor de standaard homepagina
     /**
-     * @Route("/")
+     * @Route("/", name="homepagina")
      */
 
     public function homepage() {
@@ -71,33 +71,6 @@ class BezoekerController extends AbstractController
         ]);
     }
 
-    //route om in te loggen
-    /**
-     * @Route("/bezoekers/inloggen")
-     */
-    public function inloggen(Request $request) {
-        $login = new Persoon();
-
-        $form = $this->createForm(LoginType::class, $login);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $login=$form->getData();
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($login);
-            $em->flush();
-            $this->addFlash('succes', 'training toegevoegd');
-
-
-        }
-
-        return $this->render('/admin/training_toevoegen.html.twig', [
-            'form' => $form->createView(),
-        ]);
-        return $this->render('bezoekers/inloggen.html.twig', [
-
-        ]);
-    }
 
 
 

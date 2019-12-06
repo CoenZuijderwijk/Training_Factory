@@ -13,17 +13,22 @@ use App\Form\Type\TrainingType;
 use App\Form\Type\TaskType;
 use App\Entity\task;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\AdminController;
+use App\Controller\BezoekerController;
+use App\Controller\LedenController;
 
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
-             return $this->redirectToRoute('admin_home');
+             return $this->redirectToRoute('homepagina');
          }
 
         // get the login error if there is one
@@ -33,6 +38,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
+
 
     /**
      * @Route("/logout", name="app_logout")

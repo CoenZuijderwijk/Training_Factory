@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -46,12 +47,6 @@ class PersoonType extends AbstractType
                     ], 'attr' => ['class' => 'f_reg']
                 ])
             ->add('email', EmailType::class)
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Lid' => ["ROLE_USER"],
-                ], 'attr' => ['class' => 'f_reg']
-
-            ])
             ->add('straat', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])

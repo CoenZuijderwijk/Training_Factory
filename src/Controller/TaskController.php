@@ -12,6 +12,7 @@ use App\Entity\task;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class TaskController extends AbstractController
 {
@@ -20,21 +21,22 @@ class TaskController extends AbstractController
      * @Route("/bezoekers/inschrijven")
      */
 
-    public function Inschrijven(Request $request)
+    public function Inschrijven(Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
+
         $person = new Persoon();
 
         $form = $this->createForm(PersoonType::class, $person);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $password = $passwordEncoder->encodePassword($person, $person->getPassword());
+            $person->setPassword($password);
             $persoon=$form->getData();
             $em=$this->getDoctrine()->getManager();
             $em->persist($persoon);
             $em->flush();
             $this->addFlash('succes', 'persoon toegevoegd');
-
         }
 
         return $this->render('/bezoekers/Inschrijven.html.twig', [
