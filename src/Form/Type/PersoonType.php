@@ -3,6 +3,7 @@
 
 namespace App\Form\Type;
 
+use Doctrine\DBAL\Types\JsonType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,43 +22,43 @@ class PersoonType extends AbstractType
 
 
         $builder
-            ->add('Loginnaam', TextType::class, [
+            ->add('username', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Wachtwoord', TextType::class, [
+            ->add('password', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Voornaam', TextType::class, [
+            ->add('voornaam', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Voorvoegsel', ChoiceType::class, [
+            ->add('voorvoegsel', ChoiceType::class, [
                 'choices'  => [
                     'Dhr.' => "Dhr.",
                     'Mvr.' => "Mvr.",
                 ], 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Achternaam', TextType::class)
-            ->add('Geboortedatum',  BirthdayType::class)
-            ->add('Gender', ChoiceType::class, [
+            ->add('achternaam', TextType::class)
+            ->add('geboortedatum',  BirthdayType::class)
+            ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'man' => "man",
                     'vrouw' => "vrouw"
                     ], 'attr' => ['class' => 'f_reg']
                 ])
-            ->add('Emailadress', EmailType::class)
-            ->add('Functie', ChoiceType::class, [
+            ->add('email', EmailType::class)
+            ->add('roles', ChoiceType::class, [
                 'choices' => [
-                    'Lid' => "2",
+                    'Lid' => ["ROLE_USER"],
                 ], 'attr' => ['class' => 'f_reg']
 
             ])
-            ->add('Straat', TextType::class, [
+            ->add('straat', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Postcode', TextType::class, [
+            ->add('postcode', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
-            ->add('Plaats', TextType::class, [
+            ->add('plaats', TextType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
             ->add('save', SubmitType::class, [

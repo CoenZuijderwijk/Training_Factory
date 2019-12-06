@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PersoonRepository")
  */
-class Persoon
+class Persoon implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,42 +21,43 @@ class Persoon
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Loginnaam;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Wachtwoord;
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Voorvoegsel;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Achternaam;
+    private $voorvoegsel;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $achternaam;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $Geboortedatum;
+    private $geboortedatum;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Gender;
+    private $gender;
+
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="json")
      */
-    private $Emailadress;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Functie;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -69,192 +72,224 @@ class Persoon
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Straat;
+    private $straat;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Postcode;
+    private $postcode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Plaats;
+    private $plaats;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Voornaam;
+    private $voornaam;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLoginnaam(): ?string
+    public function getPassword(): ?string
     {
-        return $this->Loginnaam;
+        // TODO cleanup the ?? once issue has been resolved
+        // https://github.com/symfony/symfony/issues/34824
+        return $this->password ?? '';
     }
 
-    public function setLoginnaam(string $Loginnaam): self
+    public function setPassword(string $password): self
     {
-        $this->Loginnaam = $Loginnaam;
+
+        $this->password = $password;
 
         return $this;
     }
 
-    public function getWachtwoord(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->Wachtwoord;
+        return (string) $this->username;
     }
 
-    public function setWachtwoord(string $Wachtwoord): self
+    public function setUsername($username): self
     {
-        $this->Wachtwoord = $Wachtwoord;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function getVoorvoegsel(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->Voorvoegsel;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setVoorvoegsel(string $Voorvoegsel): self
+    public function setRoles(array $roles): self
     {
-        $this->Voorvoegsel = $Voorvoegsel;
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getAchternaam(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->Achternaam;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    public function setAchternaam(string $Achternaam): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->Achternaam = $Achternaam;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getGeboortedatum(): ?\DateTimeInterface
+    public function getVoorvoegsel()
     {
-        return $this->Geboortedatum;
+        return $this->voorvoegsel;
     }
 
-    public function setGeboortedatum(\DateTimeInterface $Geboortedatum): self
+    public function setVoorvoegsel($voorvoegsel): self
     {
-        $this->Geboortedatum = $Geboortedatum;
+        $this->voorvoegsel = $voorvoegsel;
 
         return $this;
     }
 
-    public function getGender(): ?string
+    public function getAchternaam()
     {
-        return $this->Gender;
+        return $this->achternaam;
     }
 
-    public function setGender(string $Gender): self
+    public function setAchternaam($achternaam): self
     {
-        $this->Gender = $Gender;
+        $this->achternaam = $achternaam;
 
         return $this;
     }
 
-    public function getEmailadress(): ?string
+    public function getGeboortedatum()
     {
-        return $this->Emailadress;
+        return $this->geboortedatum;
     }
 
-    public function setEmailadress(string $Emailadress): self
+    public function setGeboortedatum($geboortedatum): self
     {
-        $this->Emailadress = $Emailadress;
+        $this->geboortedatum = $geboortedatum;
 
         return $this;
     }
 
-    public function getFunctie(): ?int
+    public function getGender()
     {
-        return $this->Functie;
+        return $this->gender;
     }
 
-    public function setFunctie(int $Functie): self
+    public function setGender($gender): self
     {
-        $this->Functie = $Functie;
+        $this->gender = $gender;
 
         return $this;
     }
 
-    public function getHiringDate(): ?\DateTimeInterface
+    public function getHiringDate()
     {
         return $this->hiring_date;
     }
 
-    public function setHiringDate(?\DateTimeInterface $hiring_date): self
+    public function setHiringDate($hiring_date): self
     {
         $this->hiring_date = $hiring_date;
 
         return $this;
     }
 
-    public function getSalary(): ?string
+    public function getSalary()
     {
         return $this->salary;
     }
 
-    public function setSalary(?string $salary): self
+    public function setSalary($salary): self
     {
         $this->salary = $salary;
 
         return $this;
     }
 
-    public function getStraat(): ?string
+    public function getStraat()
     {
-        return $this->Straat;
+        return $this->straat;
     }
 
-    public function setStraat(string $Straat): self
+    public function setStraat($straat): self
     {
-        $this->Straat = $Straat;
+        $this->straat = $straat;
 
         return $this;
     }
 
-    public function getPostcode(): ?string
+    public function getPostcode()
     {
-        return $this->Postcode;
+        return $this->postcode;
     }
 
-    public function setPostcode(string $Postcode): self
+    public function setPostcode($postcode): self
     {
-        $this->Postcode = $Postcode;
+        $this->postcode = $postcode;
 
         return $this;
     }
 
-    public function getPlaats(): ?string
+    public function getPlaats()
     {
-        return $this->Plaats;
+        return $this->plaats;
     }
 
-    public function setPlaats(string $Plaats): self
+    public function setPlaats($plaats): self
     {
-        $this->Plaats = $Plaats;
+        $this->plaats = $plaats;
 
         return $this;
     }
 
-    public function getVoornaam(): ?string
+    public function getVoornaam()
     {
-        return $this->Voornaam;
+        return $this->voornaam;
     }
 
-    public function setVoornaam(string $Voornaam): self
+    public function setVoornaam($voornaam): self
     {
-        $this->Voornaam = $Voornaam;
+        $this->voornaam = $voornaam;
 
         return $this;
     }
