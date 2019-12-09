@@ -83,3 +83,15 @@ nav ul li {
 .m_auto {
     margin: auto;
 }
+
+.l_form {
+    width: 100%;
+}
+
+.l_form label {
+    font-size: 10px;
+}
+
+label {
+    font-size: 25px;
+}

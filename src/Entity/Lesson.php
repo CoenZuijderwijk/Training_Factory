@@ -34,7 +34,12 @@ class Lesson
     /**
      * @ORM\Column(type="integer")
      */
-    private $max_persons;
+    private $maxPersons;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lesNaam;
 
     public function getId(): ?int
     {
@@ -79,12 +84,24 @@ class Lesson
 
     public function getMaxPersons(): ?int
     {
-        return $this->max_persons;
+        return $this->maxPersons;
     }
 
-    public function setMaxPersons(int $max_persons): self
+    public function setMaxPersons(int $maxPersons): self
     {
-        $this->max_persons = $max_persons;
+        $this->maxPersons = $maxPersons;
+
+        return $this;
+    }
+
+    public function getlesNaam(): ?string
+    {
+        return $this->lesNaam;
+    }
+
+    public function setlesNaam(string $lesNaam): self
+    {
+        $this->lesNaam = $lesNaam;
 
         return $this;
     }

@@ -1,0 +1,79 @@
+{% extends 'instructeur/instructeur.html.twig' %}
+{% block title %} Training Centrum Den Haag {% endblock %}
+{% block body %}
+    <div class="col-5"></div>
+    <div class="col-3 m_auto">
+        <p class="p_text">Les overzicht</p></div>
+    <div class="col-12 m_auto">
+        <table class="table">
+            <thead>
+            <th>Naam</th>
+            <th>Datum</th>
+            <th>Tijdstip</th>
+            <th>Max. Personen</th>
+            </thead>
+            {% for les in les %}
+                <tr>
+                    <td> {{ les.lesNaam }}</td>
+                    <td> {{ les.date | date('d-m-Y') }}</td>
+                    <td> {{ les.time | date('H:i') }}</td>
+                    <td> {{ les.maxPersons }}</td>
+
+                    <td>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('les_wijzigen', {id: les.id}) }}">Wijzigen</a>
+                        </button>
+                    </td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Training verwijderen
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Weet u het zeker?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"><a
+                                                    style="color:white; text-decoration: none;"
+                                                    href="{{ path('les_overzicht', {id: les.id}) }}">Nee</a>
+                                        </button>
+                                        <button type="button" class="btn btn-primary"><a
+                                                    style="color:white; text-decoration: none;"
+                                                    href="{{ path('les_verwijderen', {id: les.id}) }}">Ja</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+
+                </tr>
+            {% endfor %}
+            {#        {{ trainingen }}#}
+        </table>
+
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+{% endblock %}
