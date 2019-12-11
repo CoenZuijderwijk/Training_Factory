@@ -7,28 +7,22 @@
             <p class="t_aanbod text-center">Trainings aanbod</p>
         </div>
         <div class="col-2"></div>
-        <div class="col-4">
-            <img  style=" height: 20vh; width: 100%; padding: 1%;" class="float-left img-fluid" src="{{ asset('img/boksen_3.jpg') }}">
-        </div>
-        <div class="col-8">
-            <p class="p_text"> KickBox training</p>
-            <p class="ta_desc">Beschrijving over Kickbox training</p>
-        </div>
-        <div class="col-4">
-            <img style=" height: 20vh; width: 100%; padding: 1%;" class="float-left img-fluid" src="{{ asset('img/boksen_2.jpg') }}">
-        </div>
-        <div class="col-8">
-            <p class="p_text"> Stootzak training</p>
-            <p class="ta_desc">Beschrijving over Stootzak training</p>
-        </div>
-        <div class="col-4">
-            <img style=" height: 20vh; width: 100%; padding: 1%;" class="float-left img-fluid" src="{{ asset('img/boksen_1.jpg') }}">
-        </div>
-        <div class="col-8">
-            <p class="p_text"> MMA</p>
-            <p class="ta_desc">Beschrijving over MMA</p>
-        </div>
-
+        <table class="table">
+            <thead>
+            <th>Naam</th>
+            <th>Beschrijving</th>
+            <th>Duur</th>
+            <th>Kosten</th>
+            </thead>
+            {% for training in trainingen %}
+            <tr>
+                <td> {{ training.naam }}</td>
+                <td> {{ training.beschrijving }}</td>
+                <td> {{ training.duur | date('H:i') }}</td>
+                <td> {{ training.kosten }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
     </div>
 {% endblock %}

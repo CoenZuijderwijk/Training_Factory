@@ -5,6 +5,8 @@ namespace App\Controller;
 
 
 use App\Entity\Lesson;
+use App\Entity\Persoon;
+use App\Entity\Registration;
 use App\Entity\task;
 use App\Form\Type\LessonType;
 use App\Form\Type\TaskType;
@@ -55,7 +57,7 @@ class InstructeurController extends AbstractController
         $les_d = $entityManager->getRepository(Lesson::class)->find($id);
         $entityManager->remove($les_d);
         $entityManager->flush();
-        return $this->render('instructeur/les_verwijderen.html.twig'
+        return $this->render('les_overzicht'
         );
     }
 
@@ -75,9 +77,11 @@ class InstructeurController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($les);
             $em->flush();
-            $this->addFlash('succes', 'training toegevoegd');
+            $this->addFlash('succes', 'les toegevoegd');
+           return $this->les_overzicht();
+
         }
-        return $this->render('/admin/training_toevoegen.html.twig', [
+        return $this->render('instructeur/les_toevoegen.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -99,11 +103,24 @@ class InstructeurController extends AbstractController
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($les);
             $entityManager->flush();
-            $this->addFlash('succes', 'training aangepast');
+            $this->addFlash('succes', 'les aangepast');
+            return $this->render('les_overzicht');
         }
         return $this->render('instructeur/les_wijzigen.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    //route voor instructeurs om alle lessen te zien
+    /**
+     * @Route("/instructeur/deelnemer_overzicht/{id}", name="deelnemer_overzicht")
+     */
+
+    public function deelnemer_overzicht($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $lessons = $entityManager->getRepository(Lesson::class)->find($id);
+        return $this->render('instructeur/deelnemer_lijst.html.twig',  ['lessons' => $lessons]
+        );
     }
 
 

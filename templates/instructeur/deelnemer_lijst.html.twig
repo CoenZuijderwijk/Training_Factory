@@ -1,0 +1,27 @@
+{% extends 'leden/leden.html.twig' %}
+{% block body %}
+    <div class="col-5"></div>
+    <div class="col-3 m_auto">
+        <p class="p_text">Les overzicht</p></div>
+    <div class="col-12 m_auto">
+        <table class="table">
+            <thead>
+            <th>Les</th>
+            <th>Les datum</th>
+            <th>Les tijd</th>
+            <th>Betaald</th>
+            </thead>
+            {% for lesson in lessons %}
+                <tr>
+                    <td> {{ lesson.les.lesNaam }}</td>
+                    <td>{{ registration.les.__toString }}</td>
+                    <td>{{ registration.les.__toString2 }}</td>
+                    <td>{{ registration.payment }}</td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;" href="{{ path('uitschrijven_les', {'id': registration.id}) }}">Uitschrijven voor les</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

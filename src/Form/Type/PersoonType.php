@@ -20,39 +20,54 @@ class PersoonType extends AbstractType
 
         $builder
             ->add('username', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Gebruikersnaam'
             ])
             ->add('password', TextType::class, [
-                'attr' => ['class' => 'f_reg']
-            ])
-            ->add('voornaam', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Wachtwoord',
+                'data' => 'Wachtwoord'
             ])
             ->add('voorvoegsel', ChoiceType::class, [
                 'choices'  => [
                     'Dhr.' => "Dhr.",
                     'Mvr.' => "Mvr.",
-                ], 'attr' => ['class' => 'f_reg']
+                ], 'attr' => ['class' => 'f_reg'],
+                'label' => 'Voorvoegsel'
             ])
-            ->add('achternaam', TextType::class)
-            ->add('geboortedatum',  BirthdayType::class)
+            ->add('voornaam', TextType::class, [
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Voornaam'
+            ])
+            ->add('achternaam', TextType::class, [
+                'label' => 'Achternaam'
+            ])
+            ->add('geboortedatum',  BirthdayType::class, [
+                'label' => 'Geboortedatum'
+            ])
             ->add('gender', ChoiceType::class, [
                 'choices' => [
                     'man' => "man",
                     'vrouw' => "vrouw"
-                    ], 'attr' => ['class' => 'f_reg']
+                    ], 'attr' => ['class' => 'f_reg'],
+                'label' => 'Gender'
                 ])
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'label' => 'Emailaddres'
+            ])
             ->add('straat', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Straat'
             ])
             ->add('postcode', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Postcode'
             ])
             ->add('plaats', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Plaats'
             ])
-            ->add('save', SubmitType::class, [
+            ->add('Gaan', SubmitType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
         ;

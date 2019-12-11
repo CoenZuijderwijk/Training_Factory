@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Persoon;
 use App\Entity\task;
+use App\Entity\Training;
 use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,8 +32,10 @@ class BezoekerController extends AbstractController
      * @Route("/bezoekers/trainings_aanbod")
      */
     public function trainings_aanbod() {
-        return $this->render('bezoekers/trainings_aanbod.html.twig', [
-        ]);
+        $entityManager = $this->getDoctrine()->getManager();
+        $trainingen = $entityManager->getRepository(Training::class)->findAll();
+        return $this->render('bezoekers/trainings_aanbod.html.twig',  ['trainingen' => $trainingen]
+        );
     }
 
     //route om contact op te nemen

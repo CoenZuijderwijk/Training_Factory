@@ -21,29 +21,30 @@ class LessonType extends AbstractType
 
 
         $builder
-            ->add('lesNaam', TextType::class, [
-                'attr' => ['class' => 'l_form']
-            ])
             ->add('lesNaam', EntityType::class, [
                 'class' => Training::class,
                 'choice_label' => function(Training $training)  {
-                    return sprintf('%d %s', $training->getId(), $training->__toString());
-                }
+                    return sprintf('%s', $training->__toString());
+                } , 'label' => 'Les naam'
             ])
             ->add('time', TimeType::class, [
                 'placeholder' => 'Select a value',
-                'attr' => ['class' => 'l_form']
+                'attr' => ['class' => 'l_form'],
+                'label' => 'Tijdstip'
             ])
             ->add('date', DateType::class, [
-                'attr' => ['class' => 'l_form']
+                'attr' => ['class' => 'l_form'],
+                'label' => 'Datum'
             ])
             ->add('Location', TextType::class, [
-                'attr' => ['class' => 'l_form']
+                'attr' => ['class' => 'l_form'],
+                'label' => 'Locatie'
             ])
             ->add('maxPersons', NumberType::class, [
-                'attr' => ['class' => 'l_form']
+                'attr' => ['class' => 'l_form'],
+                'label' => 'Max aantal personen'
             ])
-            ->add('save', SubmitType::class, [
+            ->add('Toevoegen', SubmitType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
         ;

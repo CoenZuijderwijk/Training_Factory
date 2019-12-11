@@ -19,22 +19,23 @@ class TrainingType extends AbstractType
 
         $builder
             ->add('naam', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Naam'
             ])
             ->add('beschrijving', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Beschrijving'
             ])
             ->add('duur', TimeType::class, [
-                'placeholder' => 'Select a value',
-                'attr' => ['class' => 'f_reg']
-            ])
-            ->add('kosten', TextType::class, [
-                'attr' => ['class' => 'f_reg']
+                'placeholder' => ['Uur' => 'Uur', 'Minuut' => 'Minuut'],
+                'attr' => ['class' => 'd_form'],
+                'label' => 'Duur'
             ])
             ->add('kosten', MoneyType::class, [
-                'attr' => ['class' => 'f_reg']
+                'attr' => ['class' => 'f_reg'],
+                'label' => 'Kosten'
             ])
-            ->add('save', SubmitType::class, [
+            ->add('Toevoegen', SubmitType::class, [
                 'attr' => ['class' => 'f_reg']
             ])
         ;
