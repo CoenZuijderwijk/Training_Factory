@@ -150,4 +150,5 @@ class Lesson
 
         return $this;
     }
+
 }

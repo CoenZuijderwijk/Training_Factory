@@ -84,4 +84,9 @@ class Registration
     }
 
 
+    public function getDeelnemers($id)
+    {
+        $dql = 'SELECT persoon_id FROM AppBundle\Entity\Registration WHERE les_id = $id';
+    }
+
 }

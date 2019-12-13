@@ -119,6 +119,7 @@ class InstructeurController extends AbstractController
     public function deelnemer_overzicht($id) {
         $entityManager = $this->getDoctrine()->getManager();
         $lessons = $entityManager->getRepository(Lesson::class)->find($id);
+
         return $this->render('instructeur/deelnemer_lijst.html.twig',  ['lessons' => $lessons]
         );
     }
