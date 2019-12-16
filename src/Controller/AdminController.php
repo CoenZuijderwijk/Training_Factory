@@ -4,14 +4,18 @@
 namespace App\Controller;
 
 
+use App\Entity\Persoon;
 use App\Entity\task;
 use App\Entity\Training;
+use App\Form\Type\InstructeurType;
+use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use App\Form\Type\TrainingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
   * Require ROLE_ADMIN for *every* controller method in this class.
@@ -123,6 +127,95 @@ class AdminController extends AbstractController
             $this->addFlash('succes', 'training toegevoegd');
         }
         return $this->render('/admin/training_toevoegen.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    //route voor admins voor een overzicht van alle leden
+    /**
+     * @Route("/admin/leden_overzicht", name="leden_overzicht")
+     */
+
+    public function leden_overzicht() {
+        $entityManager = $this->getDoctrine()->getManager();
+        $leden = $entityManager->getRepository(Persoon::class)->findAll();
+        return $this->render('admin/leden_overzicht.html.twig',  ['leden' => $leden]
+        );
+    }
+
+
+    //route voor admins voor een overzicht van alle leden
+    /**
+     * @Route("/admin/disable_lid/{id}", name="lid_disable")
+     */
+
+    public function disable_lid($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $leden = $entityManager->getRepository(Persoon::class)->find($id);
+        $leden->setRoles(["ROLE_USER"]);
+        $entityManager->persist($leden);
+        $entityManager->flush();
+        return $this->render('admin/disable_lid.html.twig',  ['leden' => $leden]
+        );
+    }
+
+    //route voor admins voor een overzicht van alle leden
+    /**
+     * @Route("/admin/instructeur_overzicht", name="instructeur_overzicht")
+     */
+
+    public function instructeur_overzicht() {
+        $entityManager = $this->getDoctrine()->getManager();
+        $leden = $entityManager->getRepository(Persoon::class)->findAll();
+        return $this->render('admin/instructeur_overzicht.html.twig',  ['leden' => $leden, 'role' => ["ROLE_INSTRUCTEUR"]]
+        );
+    }
+
+    //route voor admins om een instructeur te wijzigen
+    /**
+     * @Route("/admin/instructeur_wijzigen/{id}", name="instructeur_wijzigen")
+     */
+
+    public function instructeur_wijzigen(Request $request, $id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $instructeur = $entityManager->getRepository(Persoon::class)->find($id);
+        $form = $this->createForm(InstructeurType::class, $instructeur);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $instr=$form->getData();
+            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->persist($instr);
+            $entityManager->flush();
+            $this->addFlash('succes', 'training aangepast');
+        }
+        return $this->render('/admin/instructeur_wijzigen.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    //route voor admins om een instructeur toe te voegen
+    /**
+     * @Route("/admin/instructeur_toevoegen", name="instructeur_toevoegen")
+     */
+
+    public function instructeur_toevoegen(Request $request,UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $person = new Persoon();
+
+        $form = $this->createForm(PersoonType::class, $person);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $passwordEncoder->encodePassword($person, $person->getPassword());
+            $person->setPassword($password);
+            $persoon=$form->getData();
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($persoon);
+            $em->flush();
+            $this->addFlash('succes', 'persoon toegevoegd');
+        }
+        return $this->render('/admin/instructeur_toevoegen.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -19,6 +19,13 @@ class PersoonRepository extends ServiceEntityRepository
         parent::__construct($registry, Persoon::class);
     }
 
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
     // /**
     //  * @return Persoon[] Returns an array of Persoon objects
     //  */

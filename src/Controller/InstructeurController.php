@@ -10,6 +10,7 @@ use App\Entity\Registration;
 use App\Entity\task;
 use App\Form\Type\LessonType;
 use App\Form\Type\TaskType;
+use App\Repository\RegistrationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -116,11 +117,10 @@ class InstructeurController extends AbstractController
      * @Route("/instructeur/deelnemer_overzicht/{id}", name="deelnemer_overzicht")
      */
 
-    public function deelnemer_overzicht($id) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $lessons = $entityManager->getRepository(Lesson::class)->find($id);
+    public function deelnemer_overzicht(RegistrationRepository $repository,$id) {
+    $members = $repository->getRegistrations($id);
 
-        return $this->render('instructeur/deelnemer_lijst.html.twig',  ['lessons' => $lessons]
+        return $this->render('instructeur/deelnemer_lijst.html.twig',  ['members' => $members]
         );
     }
 

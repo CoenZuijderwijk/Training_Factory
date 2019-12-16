@@ -19,6 +19,17 @@ class RegistrationRepository extends ServiceEntityRepository
         parent::__construct($registry, Registration::class);
     }
 
+    public function getRegistrations($id)
+    {
+        $query = $this->createQueryBuilder('r')
+            ->andWhere("r.les = :id")
+            ->setParameter('id', $id)
+            ->join('r.persoon', 'p')
+            ->select('p.voorvoegsel, p.voornaam, p.achternaam, r.payment')
+            ->getQuery();
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Registration[] Returns an array of Registration objects
     //  */

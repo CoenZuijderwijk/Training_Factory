@@ -1,0 +1,50 @@
+{% extends 'admin/admin.html.twig' %}
+{% block title %} Training Centrum Den Haag {% endblock %}
+{% block body %}
+    <div class="col-5"></div>
+    <div class="col-3 m_auto">
+        <p class="p_text">Training overzicht</p></div>
+    <div class="col-12 m_auto">
+        <table class="table">
+            <thead>
+            <th>Voorvoegsel</th>
+            <th>Voornaan</th>
+            <th>Achternaam</th>
+            <th>Gender</th>
+            <th>Straat</th>
+            <th>Postcode</th>
+            <th>Plaats</th>
+            </thead>
+            {% for persoon in leden %}
+                {% if persoon.roles[0] == "ROLE_INSTRUCTEUR" %}
+                <tr>
+                    <td> {{persoon.voorvoegsel}}</td>
+                    <td> {{ persoon.voornaam }}</td>
+                    <td> {{ persoon.achternaam }}</td>
+                    <td> {{ persoon.gender }}</td>
+                    <td> {{ persoon.straat }}</td>
+                    <td> {{ persoon.postcode }}</td>
+                    <td> {{ persoon.plaats }}</td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('instructeur_wijzigen', {id: persoon.id}) }}">Wijzigen</a>
+                        </button>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            {#        {{ trainingen }}#}
+        </table>
+
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+{% endblock %}

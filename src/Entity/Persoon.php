@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PersoonRepository")
  */
@@ -338,6 +339,11 @@ class Persoon implements UserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getRoles();
     }
 
 
