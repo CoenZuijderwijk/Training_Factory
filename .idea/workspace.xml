@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c6108b4-aa4d-429f-86fb-e7233d874d83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form/Type/InstructeurType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/disable_lid.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_toevoegen.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_wijzigen.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/leden_overzicht.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_les_overzicht.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_verwijderen.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/lid_les_overzicht.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Persoon.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Persoon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Type/InstructeurType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Type/InstructeurType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/PersoonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PersoonRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RegistrationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instructeur/deelnemer_lijst.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/deelnemer_lijst.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/leden_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/leden_overzicht.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,6 +230,7 @@
       <workItem from="1576223427086" duration="5972000" />
       <workItem from="1576237036696" duration="596000" />
       <workItem from="1576487310989" duration="7315000" />
+      <workItem from="1576663230840" duration="4534000" />
     </task>
     <servers />
   </component>
@@ -255,9 +254,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576496295294">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576666983122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576496295294" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576666983122" />
   </component>
 </project>

@@ -112,7 +112,7 @@ class InstructeurController extends AbstractController
         ]);
     }
 
-    //route voor instructeurs om alle lessen te zien
+    //route voor instructeurs om alle deelnemers per les  te zien
     /**
      * @Route("/instructeur/deelnemer_overzicht/{id}", name="deelnemer_overzicht")
      */

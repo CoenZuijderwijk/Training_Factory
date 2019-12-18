@@ -26,9 +26,12 @@
                     <td> {{ persoon.plaats }}</td>
                     <td>
                         <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('lid_disable', {id: persoon.id}) }}">Disable'en</a>
+                                                           href="{{ path('lid_les', {id: persoon.id}) }}">Les overzicht per persoon</a>
                         </button>
                     </td>
+                    <td><button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('lid_disable', {id: persoon.id}) }}">Disable'en</a>
+                        </button></td>
                 </tr>
             {% endfor %}
             {#        {{ trainingen }}#}

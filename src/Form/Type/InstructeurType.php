@@ -66,9 +66,6 @@ class InstructeurType extends AbstractType
                 'attr' => ['class' => 'f_reg'],
                 'label' => 'Plaats'
             ])
-            ->add('roles', HiddenType::class, [
-                'data' => ["ROLE_INSTRUCTEUR"]
-            ])
             ->add('Gaan', SubmitType::class, [
                 'attr' => ['class' => 'f_reg']
             ])

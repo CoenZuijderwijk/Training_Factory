@@ -1,0 +1,23 @@
+{% extends 'admin/admin.html.twig' %}
+{% block body %}
+    <div class="col-5"></div>
+    <div class="col-3 m_auto">
+        <p class="p_text">Les overzicht</p></div>
+    <div class="col-12 m_auto">
+        <table class="table">
+            <thead>
+            <th>Les id</th>
+            <th>Les naam</th>
+            <th>Les locatie</th>
+            </thead>
+            {% for registration in persoon.registrations %}
+                {% set les = registration.les %}
+                <tr>
+                    <td>{{ les.id }}</td>
+                    <td>{{ les.lesnaam }}</td>
+                    <td>{{ les.location}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

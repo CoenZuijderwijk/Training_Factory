@@ -26,6 +26,16 @@ class PersoonRepository extends ServiceEntityRepository
         return $this;
     }
 
+    public function getLessons($id)
+    {
+        $query = $this->createQueryBuilder('r')
+            ->andWhere("r.persoon = :id")
+            ->setParameter('id', $id)
+            ->join('r.lesson', 'l')
+            ->select('l.id, l.lesnaam, l.date, l.location')
+            ->getQuery();
+        return $query->getResult();
+    }
     // /**
     //  * @return Persoon[] Returns an array of Persoon objects
     //  */

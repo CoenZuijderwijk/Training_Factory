@@ -11,6 +11,8 @@ use App\Form\Type\InstructeurType;
 use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use App\Form\Type\TrainingType;
+use App\Repository\PersoonRepository;
+use App\Repository\RegistrationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -210,6 +212,7 @@ class AdminController extends AbstractController
             $password = $passwordEncoder->encodePassword($person, $person->getPassword());
             $person->setPassword($password);
             $persoon=$form->getData();
+            $persoon->setRoles(["ROLE_INSTRUCTEUR"]);
             $em=$this->getDoctrine()->getManager();
             $em->persist($persoon);
             $em->flush();
@@ -219,6 +222,43 @@ class AdminController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    //route voor admins om een instructeur te verwijderen
+    /**
+     * @Route("/admin/instructeur_verwijderen/{id}", name="instructeur_verwijderen")
+     */
+
+    public function instructeur_verwijderen($id) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $inst = $entityManager->getRepository(Persoon::class)->find($id);
+        $entityManager->remove($inst);
+        $entityManager->flush();
+        return $this->render('admin/instructeur_verwijderen.html.twig'
+        );
+    }
+
+    //route voor admins om alle lessen per lid te zien
+    /**
+     * @Route("/admin/les_overzicht/{id}", name="lid_les")
+     */
+
+    public function les_overzicht(Persoon $persoon) {
+
+        return $this->render('admin/lid_les_overzicht.html.twig',  ['persoon' => $persoon]
+        );
+    }
+
+    //route voor admins voor een overzicht van alle leden
+    /**
+     * @Route("/admin/instructeur_les_overzicht/{id}", name="instructeur_les")
+     */
+
+    public function instructeur_les_overzicht(Persoon $persoon) {
+        return $this->render('admin/instructeur_overzicht.html.twig',  ['persoon' => $persoon]
+        );
+    }
+
+
 
 
 
