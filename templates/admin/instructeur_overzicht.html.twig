@@ -27,14 +27,14 @@
                     <td> {{ persoon.postcode }}</td>
                     <td> {{ persoon.plaats }}</td>
                     <td>
-                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
                                                            href="{{ path('instructeur_wijzigen', {id: persoon.id}) }}">Wijzigen</a>
                         </button>
                     </td>
                     <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Instructeur verwijderen
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Instructeur<br> verwijderen
                         </button>
 
                         <!-- Modal -->
@@ -66,8 +66,13 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_les', {id: persoon.id}) }}">Les overzicht per instructeur</a>
+                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('instructeur_les', {id: persoon.id}) }}">Les overzicht <br>per instructeur</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('instructeur_omzet', {id: persoon.id}) }}">Omzet per<br> instructeur</a>
                         </button>
                     </td>
 

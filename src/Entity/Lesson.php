@@ -52,7 +52,11 @@ class Lesson
      */
     private $training;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Persoon", inversedBy="lessons")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $instructeur;
 
     public function __construct()
     {
@@ -150,5 +154,10 @@ class Lesson
 
         return $this;
     }
+
+
+ 
+
+
 
 }

@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Lesson;
 use App\Entity\Persoon;
 use App\Entity\task;
 use App\Entity\Training;
@@ -248,14 +249,29 @@ class AdminController extends AbstractController
         );
     }
 
-    //route voor admins voor een overzicht van alle leden
+    //route voor admins voor een overzicht van alle instructeurs
     /**
      * @Route("/admin/instructeur_les_overzicht/{id}", name="instructeur_les")
      */
 
     public function instructeur_les_overzicht(Persoon $persoon) {
-        return $this->render('admin/instructeur_overzicht.html.twig',  ['persoon' => $persoon]
+        $lessons = $persoon->getLessons();
+        return $this->render('admin/instructeur_les_overzicht.html.twig',  ['lessons' => $lessons]
         );
+
+    }
+
+    //route voor admins om de omzet per instructeur te zien
+    /**
+     * @Route("/admin/instructeur_omzet/{id}", name="instructeur_omzet")
+     */
+
+    public function instructeur_omzet(Persoon $persoon,RegistrationRepository $repository,$id) {
+        $lessons = $persoon->getLessons();
+        $members = $repository->getRegistrations($id);
+        return $this->render('admin/instructeur_omzet.html.twig',  ['lessons' => $lessons, 'members' => $members]
+        );
+
     }
 
 

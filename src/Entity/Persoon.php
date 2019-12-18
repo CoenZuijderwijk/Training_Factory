@@ -96,11 +96,17 @@ class Persoon implements UserInterface
      */
     private $registrations;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lesson", mappedBy="instructeur")
+     */
+    private $lessons;
 
 
     public function __construct()
     {
         $this->registrations = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
+        $this->instructeur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -344,6 +350,37 @@ class Persoon implements UserInterface
     public function __toString()
     {
         return (string) $this->getRoles();
+    }
+
+    /**
+     * @return Collection|Lesson[]
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
+    }
+
+    public function addLesson(Lesson $lesson): self
+    {
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons[] = $lesson;
+            $lesson->setInstructeur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesson(Lesson $lesson): self
+    {
+        if ($this->lessons->contains($lesson)) {
+            $this->lessons->removeElement($lesson);
+            // set the owning side to null (unless already changed)
+            if ($lesson->getInstructeur() === $this) {
+                $lesson->setInstructeur(null);
+            }
+        }
+
+        return $this;
     }
 
 

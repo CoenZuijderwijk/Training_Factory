@@ -36,8 +36,6 @@ class Registration
      */
     private $persoon;
 
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -84,9 +82,5 @@ class Registration
     }
 
 
-    public function getDeelnemers($id)
-    {
-        $dql = 'SELECT persoon_id FROM AppBundle\Entity\Registration WHERE les_id = $id';
-    }
 
 }
