@@ -4,10 +4,8 @@
 namespace App\Controller;
 
 
-use App\Entity\Lesson;
 use App\Entity\Persoon;
 use App\Entity\Registration;
-use App\Form\Type\LessonType;
 use App\Form\Type\PersoonType;
 use App\Form\Type\RegistrationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -30,6 +28,7 @@ class LedenController extends AbstractController
      * @Route("/leden/home")
      */
     public function ledenhomepage() {
+
         return $this->render('leden/index.html.twig', [
         ]);
     }
@@ -42,18 +41,21 @@ class LedenController extends AbstractController
     public function profiel_wijzigen(Request $request,UserPasswordEncoderInterface $passwordEncoder) {
         $id = $this->getUser()->getId();
         $entityManager = $this->getDoctrine()->getManager();
-        $persoon = $entityManager->getRepository(Persoon::class)->find($id);
-        $form = $this->createForm(PersoonType::class, $persoon);
 
+        $persoon = $entityManager->getRepository(Persoon::class)->find($id);
+
+        $form = $this->createForm(PersoonType::class, $persoon);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($persoon, $persoon->getPassword());
             $persoon->setPassword($password);
             $persoon=$form->getData();
+
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($persoon);
             $entityManager->flush();
-            $this->addFlash('succes', 'profiel aangepast');
+
             return $this->redirectToRoute('app_leden_ledenhomepage');
         }
         return $this->render('/leden/profiel_wijzigen.html.twig', [
@@ -69,8 +71,10 @@ class LedenController extends AbstractController
 
     public function overzicht() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $user = $this->getUser()->getId();
         $persoon = $entityManager->getRepository(Persoon::class)->find($user);
+
         return $this->render('leden/les_overzicht.html.twig',  ['persoon' => $persoon]
         );
     }
@@ -81,13 +85,13 @@ class LedenController extends AbstractController
      */
 
     public function les_inschrijven(Request $request) {
-        $em = $this->getDoctrine()->getManager();
         $reg = new Registration();
 
+        $em = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(RegistrationType::class, $reg);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $reg=$form->getData();
             $user = $this->getUser();
@@ -96,8 +100,9 @@ class LedenController extends AbstractController
             //dd($reg);
             $em->persist($reg);
             $em->flush();
-            $this->addFlash('success', 'persoon toegevoegd');
 
+            return $this->redirectToRoute('overzicht_les',  []
+            );
         }
         return $this->render('/bezoekers/Inschrijven.html.twig', [
             'form' => $form->createView(),
@@ -111,11 +116,14 @@ class LedenController extends AbstractController
 
     public function uitschrijven_les($id) {
         $entityManager = $this->getDoctrine()->getManager();
-        $uits = $entityManager->getRepository(Registration::class)->find($id);
-        $entityManager->remove($uits);
+        $uitschrijven = $entityManager->getRepository(Registration::class)->find($id);
+
+        $entityManager->remove($uitschrijven);
         $entityManager->flush();
+
         $user = $this->getUser()->getId();
         $persoon = $entityManager->getRepository(Persoon::class)->find($user);
+
         return $this->redirectToRoute('overzicht_les',  ['persoon' => $persoon]
         );
     }

@@ -31,10 +31,18 @@
 <div class="container-fluid">
     <header>
         <img class="h_img img-fluid" style="height: 20vh;" src="{{ asset('img/nav_img.png') }}">
-        <p class="h_right">
-            <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;" href="/logout">Uitloggen</a>
-            </button>
-        </p>
+        {% if user is defined %}
+            <p class="h_right">
+                <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;"
+                                               href="/logout">Uitloggen</a>
+                </button>
+            </p>
+        {% else %}
+            <p class="h_right">
+                <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;" href="/login">Inloggen</a>
+                </button>
+            </p>
+        {% endif %}
         <p class="header"> Training Centrum</p>
         <p class="header">Den Haag</p>
         <div class="line" style="    border-bottom:2px solid #b30000;">

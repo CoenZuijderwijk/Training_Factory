@@ -1,27 +1,28 @@
-{% extends 'leden/leden.html.twig' %}
+{% extends 'leden/l eden.html.twig' %}
 {% block body %}
-<div class="col-5"></div>
-<div class="col-3 m_auto">
-    <p class="p_text">Les overzicht</p></div>
-<div class="col-12 m_auto">
-    <table class="table">
-        <thead>
-        <th>Naam</th>
-        <th>Datum</th>
-        <th>Tijdstip</th>
-        <th>Max. Personen</th>
-        </thead>
-        {% for les in les %}
-        <tr>
-            <td> {{ les.lesNaam }}</td>
-            <td> {{ les.date | date('d-m-Y') }}</td>
-            <td> {{ les.time | date('H:i') }}</td>
-            <td> {{ les.maxPersons }}</td>
-            <td>
-                <button class="btn btn-primary">Inschrijven voor les</button>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+    <div class="col-5"></div>
+    <div class="col-3 m_auto">
+        <p class="p_text">Les overzicht</p></div>
+    <div class="col-12 m_auto">
+        <table class="table">
+            <thead>
+            <th>Naam</th>
+            <th>Datum</th>
+            <th>Tijdstip</th>
+            <th>Max. Personen</th>
+            </thead>
+            {% for les in les %}
+                <tr>
+                    <td> {{ les.lesNaam }}</td>
+                    <td> {{ les.date | date('d-m-Y') }}</td>
+                    <td> {{ les.time | date('H:i') }}</td>
+                    <td> {{ les.maxPersons }}</td>
+                    <td>
+                        <button class="btn btn-primary"><a href="{{ path('overzicht_les') }}">Inschrijven voor les</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

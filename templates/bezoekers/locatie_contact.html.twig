@@ -6,19 +6,19 @@
             <p class="p_text text-center">Locatie</p>
         </div>
         <div class="col-12">
-        <div id="map"></div>
-        <script>
-            // Initialize and add the map
-            function initMap() {
-                // The location of Uluru
-                var uluru = {lat: 52.044553, lng: 4.250076};
-                // The map, centered at Uluru
-                var map = new google.maps.Map(
-                    document.getElementById('map'), {zoom: 4, center: uluru});
-                // The marker, positioned at Uluru
-                var marker = new google.maps.Marker({position: uluru, map: map});
-            }
-        </script>
+            <div id="map"></div>
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    // The location of Uluru
+                    var uluru = {lat: 52.044553, lng: 4.250076};
+                    // The map, centered at Uluru
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 4, center: uluru});
+                    // The marker, positioned at Uluru
+                    var marker = new google.maps.Marker({position: uluru, map: map});
+                }
+            </script>
         </div>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdix4gf-TfQDx7mkIu24wOxhTINcmF7BQ&callback=initMap">
@@ -28,7 +28,8 @@
         </div>
         <div class="col-12">
             <p class="ta_desc"><b>Email:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Training_Factor@training_factory.nl</p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Training_Factor@training_factory.nl
+            </p>
             <p class="ta_desc"><b>Telefoonnummer: </b> &nbsp;&nbsp;&nbsp;010 519 0532</p>
         </div>
     </div>

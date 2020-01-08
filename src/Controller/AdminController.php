@@ -13,9 +13,7 @@ use App\Form\Type\InstructeurType;
 use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use App\Form\Type\TrainingType;
-use App\Repository\PersoonRepository;
 use App\Repository\RegistrationRepository;
-use Doctrine\ORM\Query\Expr\Select;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +48,7 @@ class AdminController extends AbstractController
      */
 
     public function homepage() {
+
         return $this->render('admin/index.html.twig', [
         ]);
     }
@@ -59,6 +58,7 @@ class AdminController extends AbstractController
      */
 
     public function trainingen() {
+
         return $this->render('admin/trainingen.html.twig', [
         ]);
     }
@@ -70,7 +70,9 @@ class AdminController extends AbstractController
 
     public function training_overzicht() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $trainingen = $entityManager->getRepository(Training::class)->findAll();
+
         return $this->render('admin/training_overzicht.html.twig',  ['trainingen' => $trainingen]
         );
     }
@@ -82,9 +84,12 @@ class AdminController extends AbstractController
 
     public function training_verwijderen($id) {
         $entityManager = $this->getDoctrine()->getManager();
+
         $training_d = $entityManager->getRepository(Training::class)->find($id);
+
         $entityManager->remove($training_d);
         $entityManager->flush();
+
         return $this->render('admin/training_verwijderen.html.twig'
         );
     }
@@ -96,17 +101,20 @@ class AdminController extends AbstractController
 
     public function training_wijzigen(Request $request, $id) {
         $entityManager = $this->getDoctrine()->getManager();
-        $training = $entityManager->getRepository(Training::class)->find($id);
-        $form = $this->createForm(TrainingType::class, $training);
 
+        $training = $entityManager->getRepository(Training::class)->find($id);
+
+        $form = $this->createForm(TrainingType::class, $training);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $training=$form->getData();
+
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($training);
             $entityManager->flush();
-            $this->addFlash('succes', 'training aangepast');
         }
+
         return $this->render('/admin/training_toevoegen.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -126,11 +134,13 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $training=$form->getData();
+
             $em=$this->getDoctrine()->getManager();
             $em->persist($training);
             $em->flush();
             $this->addFlash('succes', 'training toegevoegd');
         }
+
         return $this->render('/admin/training_toevoegen.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -143,7 +153,9 @@ class AdminController extends AbstractController
 
     public function leden_overzicht() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $leden = $entityManager->getRepository(Persoon::class)->findAll();
+
         return $this->render('admin/leden_overzicht.html.twig',  ['leden' => $leden]
         );
     }
@@ -156,10 +168,13 @@ class AdminController extends AbstractController
 
     public function disable_lid($id) {
         $entityManager = $this->getDoctrine()->getManager();
+
         $leden = $entityManager->getRepository(Persoon::class)->find($id);
         $leden->setRoles(["ROLE_USER"]);
+
         $entityManager->persist($leden);
         $entityManager->flush();
+
         return $this->render('admin/disable_lid.html.twig',  ['leden' => $leden]
         );
     }
@@ -171,6 +186,7 @@ class AdminController extends AbstractController
 
     public function instructeur_overzicht() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $leden = $entityManager->getRepository(Persoon::class)->findAll();
 
         return $this->render('admin/instructeur_overzicht.html.twig',  ['leden' => $leden, 'role' => ["ROLE_INSTRUCTEUR"]]
@@ -184,17 +200,20 @@ class AdminController extends AbstractController
 
     public function instructeur_wijzigen(Request $request, $id) {
         $entityManager = $this->getDoctrine()->getManager();
+
         $instructeur = $entityManager->getRepository(Persoon::class)->find($id);
+
         $form = $this->createForm(InstructeurType::class, $instructeur);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $instr=$form->getData();
+
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($instr);
             $entityManager->flush();
-            $this->addFlash('succes', 'training aangepast');
         }
+
         return $this->render('/admin/instructeur_wijzigen.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -210,17 +229,18 @@ class AdminController extends AbstractController
         $person = new Persoon();
 
         $form = $this->createForm(PersoonType::class, $person);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($person, $person->getPassword());
             $person->setPassword($password);
             $persoon=$form->getData();
             $persoon->setRoles(["ROLE_INSTRUCTEUR"]);
+
             $em=$this->getDoctrine()->getManager();
             $em->persist($persoon);
             $em->flush();
-            $this->addFlash('succes', 'persoon toegevoegd');
+
         }
         return $this->render('/admin/instructeur_toevoegen.html.twig', [
             'form' => $form->createView(),
@@ -234,13 +254,15 @@ class AdminController extends AbstractController
 
     public function instructeur_verwijderen($id) {
         $entityManager = $this->getDoctrine()->getManager();
-        $inst = $entityManager->getRepository(Persoon::class)->find($id);
-        $entityManager->remove($inst);
+
+        $instructeur = $entityManager->getRepository(Persoon::class)->find($id);
+
+        $entityManager->remove($instructeur);
         $entityManager->flush();
+
         return $this->render('admin/instructeur_verwijderen.html.twig'
         );
     }
-
 
     //route voor admins om alle lessen per lid te zien
     /**
@@ -249,7 +271,9 @@ class AdminController extends AbstractController
 
     public function overzicht_les() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $les = $entityManager->getRepository(Lesson::class)->findAll();
+
         return $this->render('admin/les_overzicht.html.twig',  ['les' => $les]
         );
     }
@@ -264,6 +288,7 @@ class AdminController extends AbstractController
         return $this->render('admin/lid_les_overzicht.html.twig',  ['persoon' => $persoon]
         );
     }
+
     //route voor admins voor een overzicht van alle instructeurs
     /**
      * @Route("/admin/instructeur_les_overzicht/{id}", name="instructeur_les")
@@ -271,6 +296,7 @@ class AdminController extends AbstractController
 
     public function instructeur_les_overzicht(Persoon $persoon) {
         $lessons = $persoon->getLessons();
+
         return $this->render('admin/instructeur_les_overzicht.html.twig',  ['lessons' => $lessons]
         );
 
@@ -282,63 +308,36 @@ class AdminController extends AbstractController
      */
 
     public function instructeur_omzet(Persoon $persoon,RegistrationRepository $repository,$id) {
-        $entityManager = $this->getDoctrine()->getManager();
-        $instr = $entityManager->getRepository(Persoon::class)->find($id);
-
-        $inst = $entityManager->getRepository(Lesson::class)->findBy([
-            'instructeur' => $instr->getId(),
-        ]);
-        $registration = $entityManager->getRepository(Registration::class)->findBy([
-            'les' => $inst
-        ]);
-
-        $a = 0;
         $i = 0;
-        foreach($inst as $in) {
-            //$training = $inst[$a]->getTraining();
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $instructeur = $entityManager->getRepository(Persoon::class)->find($id);
+
+        $lesson = $entityManager->getRepository(Lesson::class)->findBy([
+            'instructeur' => $instructeur->getId(),
+        ]);
+
+        foreach($lesson as $in) {
+            $registration = $entityManager->getRepository(Registration::class)->findBy([
+                'les' => $in
+            ]);
+            //$training = $lesson[$a]->getTraining();
             $training = $in->getTraining();
             //$kosten = $entityManager->getRepository(Training::class)->findBy();
-            dd($registration, $instr, $inst, $training);
-
-            //foreach ($registration as $r) {
-            foreach($in->get)
-                $i = $i + $training->getKosten();
+            //dd($registration, $instr, $lesson, $training);
+            $aantal=count($registration);
+           // dd($aantal);
+                $i = $i + ( $aantal *$training->getKosten());
             }
-            $a++;
-        }
-        dd($registration, $instr, $inst, $training, $i);
-        return $this->render('admin/instructeur_omzet.html.twig',  ['lessons' => $inst, 'i' => $i]
+
+            //dd($registration, $instr, $lesson, $training, $i);
+
+        return $this->render('admin/instructeur_omzet.html.twig',  ['lessons' => $lesson, 'i' => $i]
         );
 
     }
 
-    //route voor admins om de omzet per instructeur per les te zien
-    /**
-     * @Route("/admin/instructeur_les_omzet/{id}", name="instructeur_les_omzet")
-     */
-
-    public function instructeur_les_omzet(Persoon $persoon,RegistrationRepository $repository,$id) {
-        $entityManager = $this->getDoctrine()->getManager();
-       // $instr = $entityManager->getRepository(Persoon::class)->find($id);
-
-        $inst = $entityManager->getRepository(Lesson::class)->findBy($id);
-        //dd($inst);
-        $training = $inst->getTraining();
-        //$kosten = $entityManager->getRepository(Training::class)->findBy();
-
-        $registration = $entityManager->getRepository(Registration::class)->findBy([
-            'les' => $inst
-        ]);
-        //dd($registration);
-        //dd($registration, $instr, $inst, $training);
-        $i = 0;
-        foreach($registration as $r){
-            $i = $i + $training->getKosten();
-        }
-       // dd($i);
-        return $this->render('admin/instructeur_les_omzet.html.twig',  ['lessons' => $inst, 'i' => $i]
-        );
-    }
 
 
 

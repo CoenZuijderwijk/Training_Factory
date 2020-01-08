@@ -18,7 +18,9 @@
                     <td>{{ registration.les.__toString2 }}</td>
                     <td>{{ registration.payment }}</td>
                     <td>
-                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;" href="{{ path('uitschrijven_les', {'id': registration.id}) }}">Uitschrijven voor les</a></button>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('uitschrijven_les', {'id': registration.id}) }}">Uitschrijven
+                                voor les</a></button>
                     </td>
                 </tr>
             {% endfor %}

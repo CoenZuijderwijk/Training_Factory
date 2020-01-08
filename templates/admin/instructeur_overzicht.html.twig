@@ -6,7 +6,8 @@
         <p class="p_text">Instructeur overzicht</p></div>
     <div class="col-12 m_auto">
         <table class="table">
-            <button><a style="color:black; text-decoration: none;" href="{{ path('instructeur_toevoegen') }}">Instructeur toevoegen</a></button>
+            <button><a style="color:black; text-decoration: none;" href="{{ path('instructeur_toevoegen') }}">Instructeur
+                    toevoegen</a></button>
             <thead>
             <th>Voorvoegsel</th>
             <th>Voornaan</th>
@@ -19,66 +20,69 @@
             </thead>
             {% for persoon in leden %}
                 {% if persoon.roles[0] == "ROLE_INSTRUCTEUR" %}
-                <tr>
-                    <td> {{persoon.voorvoegsel}}</td>
-                    <td> {{ persoon.voornaam }}</td>
-                    <td> {{ persoon.achternaam }}</td>
-                    <td> {{ persoon.gender }}</td>
-                    <td> {{ persoon.straat }}</td>
-                    <td> {{ persoon.postcode }}</td>
-                    <td> {{ persoon.plaats }}</td>
-                    <td></td>
-                    <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_wijzigen', {id: persoon.id}) }}">Wijzigen</a>
-                        </button>
-                    </td>
-                    <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Instructeur<br> verwijderen
-                        </button>
+                    <tr>
+                        <td> {{ persoon.voorvoegsel }}</td>
+                        <td> {{ persoon.voornaam }}</td>
+                        <td> {{ persoon.achternaam }}</td>
+                        <td> {{ persoon.gender }}</td>
+                        <td> {{ persoon.straat }}</td>
+                        <td> {{ persoon.postcode }}</td>
+                        <td> {{ persoon.plaats }}</td>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
+                                                                      href="{{ path('instructeur_wijzigen', {id: persoon.id}) }}">Wijzigen</a>
+                            </button>
+                        </td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                Instructeur<br> verwijderen
+                            </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Weet u het zeker?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"><a
-                                                    style="color:white; text-decoration: none;"
-                                                    href="{{ path('instructeur_overzicht', {id: persoon.id}) }}">Nee</a>
-                                        </button>
-                                        <button type="button" class="btn btn-primary"><a
-                                                    style="color:white; text-decoration: none;"
-                                                    href="{{ path('instructeur_verwijderen', {id: persoon.id}) }}">Ja</a>
-                                        </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Weet u het zeker?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"><a
+                                                        style="color:white; text-decoration: none;"
+                                                        href="{{ path('instructeur_overzicht', {id: persoon.id}) }}">Nee</a>
+                                            </button>
+                                            <button type="button" class="btn btn-primary"><a
+                                                        style="color:white; text-decoration: none;"
+                                                        href="{{ path('instructeur_verwijderen', {id: persoon.id}) }}">Ja</a>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_les', {id: persoon.id}) }}">Les overzicht <br>per instructeur</a>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_omzet', {id: persoon.id}) }}">Omzet per<br> instructeur</a>
-                        </button>
-                    </td>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
+                                                                      href="{{ path('instructeur_les', {id: persoon.id}) }}">Les
+                                    overzicht <br>per instructeur</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
+                                                                      href="{{ path('instructeur_omzet', {id: persoon.id}) }}">Omzet
+                                    per<br> instructeur</a>
+                            </button>
+                        </td>
 
-                </tr>
+                    </tr>
                 {% endif %}
             {% endfor %}
             {#        {{ trainingen }}#}

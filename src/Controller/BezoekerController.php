@@ -23,17 +23,21 @@ class BezoekerController extends AbstractController
      */
 
     public function homepage() {
-        return $this->render('bezoekers/index.html.twig', [
-        ]);
+
+        return $this->render('bezoekers/index.html.twig', []
+        );
     }
 
     //route voor het trainings aanbod
     /**
      * @Route("/bezoekers/trainings_aanbod")
      */
+
     public function trainings_aanbod() {
         $entityManager = $this->getDoctrine()->getManager();
+
         $trainingen = $entityManager->getRepository(Training::class)->findAll();
+
         return $this->render('bezoekers/trainings_aanbod.html.twig',  ['trainingen' => $trainingen]
         );
     }
@@ -42,7 +46,9 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/bezoekers/contact", name="einde")
      */
+
     public function locatie_contact() {
+
         return $this->render('bezoekers/locatie_contact.html.twig', [
         ]);
     }
@@ -51,9 +57,10 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/bezoekers/gedrags_regels")
      */
-    public function gedrags_regels() {
-        return $this->render('bezoekers/gedrags_regels.html.twig', [
 
+    public function gedrags_regels() {
+
+        return $this->render('bezoekers/gedrags_regels.html.twig', [
         ]);
     }
 
@@ -67,16 +74,16 @@ class BezoekerController extends AbstractController
         $person = new Persoon();
 
         $form = $this->createForm(PersoonType::class, $person);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $passwordEncoder->encodePassword($person, $person->getPassword());
             $person->setPassword($password);
             $persoon=$form->getData();
+
             $em=$this->getDoctrine()->getManager();
             $em->persist($persoon);
             $em->flush();
-            $this->addFlash('succes', 'persoon toegevoegd');
         }
         return $this->render('/bezoekers/Inschrijven.html.twig', [
             'form' => $form->createView(),
@@ -86,10 +93,9 @@ class BezoekerController extends AbstractController
     /**
      * @Route("/logout", name="app_logout", methods={"GET"})
      */
+
     public function logout()
     {
-        // controller can be blank: it will never be executed!
-        throw new \Exception('Don\'t forget to activate logout in security.yaml');
         return $this->render('bezoekers/index.html.twig', [
 
         ]);

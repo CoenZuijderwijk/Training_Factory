@@ -15,12 +15,12 @@
             <th>Kosten</th>
             </thead>
             {% for training in trainingen %}
-            <tr>
-                <td> {{ training.naam }}</td>
-                <td> {{ training.beschrijving }}</td>
-                <td> {{ training.duur | date('H:i') }}</td>
-                <td> {{ training.kosten }}</td>
-            </tr>
+                <tr>
+                    <td> {{ training.naam }}</td>
+                    <td> {{ training.beschrijving }}</td>
+                    <td> {{ training.duur | date('H:i') }}</td>
+                    <td> {{ training.kosten }}</td>
+                </tr>
             {% endfor %}
         </table>
     </div>
