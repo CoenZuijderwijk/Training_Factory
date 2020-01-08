@@ -19,6 +19,15 @@ class LessonRepository extends ServiceEntityRepository
         parent::__construct($registry, Lesson::class);
     }
 
+    public function findregistrations($id) {
+        $query = $this->createQueryBuilder('r')
+            ->andWhere("r.instructeur = :id")
+            ->setParameter('id' , $id)
+            ->join("r.instructeur", "i")
+            ->select('r.');
+
+    }
+
     // /**
     //  * @return Lesson[] Returns an array of Lesson objects
     //  */

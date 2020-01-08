@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c6108b4-aa4d-429f-86fb-e7233d874d83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191218114737.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191218125937.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20191218131223.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_omzet.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/instructeur_les_omzet.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/les_overzicht.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Lesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lesson.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Persoon.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Persoon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_les_overzicht.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/LessonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LessonRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_omzet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_omzet.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instructeur/deelnemer_lijst.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/deelnemer_lijst.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instructeur/les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/les_overzicht.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,6 +231,9 @@
       <workItem from="1576237036696" duration="596000" />
       <workItem from="1576487310989" duration="7315000" />
       <workItem from="1576663230840" duration="12061000" />
+      <workItem from="1578305708270" duration="612000" />
+      <workItem from="1578383131781" duration="7635000" />
+      <workItem from="1578472733618" duration="6559000" />
     </task>
     <servers />
   </component>
@@ -258,9 +261,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576666983122" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1576670025507">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1578406004335">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576670025507" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578406004335" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1578474320606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578474320606" />
   </component>
 </project>

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Lesson;
 use App\Entity\Persoon;
+use App\Entity\Registration;
 use App\Entity\task;
 use App\Entity\Training;
 use App\Form\Type\InstructeurType;
@@ -14,6 +15,7 @@ use App\Form\Type\TaskType;
 use App\Form\Type\TrainingType;
 use App\Repository\PersoonRepository;
 use App\Repository\RegistrationRepository;
+use Doctrine\ORM\Query\Expr\Select;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -170,6 +172,7 @@ class AdminController extends AbstractController
     public function instructeur_overzicht() {
         $entityManager = $this->getDoctrine()->getManager();
         $leden = $entityManager->getRepository(Persoon::class)->findAll();
+
         return $this->render('admin/instructeur_overzicht.html.twig',  ['leden' => $leden, 'role' => ["ROLE_INSTRUCTEUR"]]
         );
     }
@@ -238,6 +241,19 @@ class AdminController extends AbstractController
         );
     }
 
+
+    //route voor admins om alle lessen per lid te zien
+    /**
+     * @Route("/admin/overzicht_les", name="les_o")
+     */
+
+    public function overzicht_les() {
+        $entityManager = $this->getDoctrine()->getManager();
+        $les = $entityManager->getRepository(Lesson::class)->findAll();
+        return $this->render('admin/les_overzicht.html.twig',  ['les' => $les]
+        );
+    }
+
     //route voor admins om alle lessen per lid te zien
     /**
      * @Route("/admin/les_overzicht/{id}", name="lid_les")
@@ -248,7 +264,6 @@ class AdminController extends AbstractController
         return $this->render('admin/lid_les_overzicht.html.twig',  ['persoon' => $persoon]
         );
     }
-
     //route voor admins voor een overzicht van alle instructeurs
     /**
      * @Route("/admin/instructeur_les_overzicht/{id}", name="instructeur_les")
@@ -267,11 +282,62 @@ class AdminController extends AbstractController
      */
 
     public function instructeur_omzet(Persoon $persoon,RegistrationRepository $repository,$id) {
-        $lessons = $persoon->getLessons();
-        $members = $repository->getRegistrations($id);
-        return $this->render('admin/instructeur_omzet.html.twig',  ['lessons' => $lessons, 'members' => $members]
+        $entityManager = $this->getDoctrine()->getManager();
+        $instr = $entityManager->getRepository(Persoon::class)->find($id);
+
+        $inst = $entityManager->getRepository(Lesson::class)->findBy([
+            'instructeur' => $instr->getId(),
+        ]);
+        $registration = $entityManager->getRepository(Registration::class)->findBy([
+            'les' => $inst
+        ]);
+
+        $a = 0;
+        $i = 0;
+        foreach($inst as $in) {
+            //$training = $inst[$a]->getTraining();
+            $training = $in->getTraining();
+            //$kosten = $entityManager->getRepository(Training::class)->findBy();
+            dd($registration, $instr, $inst, $training);
+
+            //foreach ($registration as $r) {
+            foreach($in->get)
+                $i = $i + $training->getKosten();
+            }
+            $a++;
+        }
+        dd($registration, $instr, $inst, $training, $i);
+        return $this->render('admin/instructeur_omzet.html.twig',  ['lessons' => $inst, 'i' => $i]
         );
 
+    }
+
+    //route voor admins om de omzet per instructeur per les te zien
+    /**
+     * @Route("/admin/instructeur_les_omzet/{id}", name="instructeur_les_omzet")
+     */
+
+    public function instructeur_les_omzet(Persoon $persoon,RegistrationRepository $repository,$id) {
+        $entityManager = $this->getDoctrine()->getManager();
+       // $instr = $entityManager->getRepository(Persoon::class)->find($id);
+
+        $inst = $entityManager->getRepository(Lesson::class)->findBy($id);
+        //dd($inst);
+        $training = $inst->getTraining();
+        //$kosten = $entityManager->getRepository(Training::class)->findBy();
+
+        $registration = $entityManager->getRepository(Registration::class)->findBy([
+            'les' => $inst
+        ]);
+        //dd($registration);
+        //dd($registration, $instr, $inst, $training);
+        $i = 0;
+        foreach($registration as $r){
+            $i = $i + $training->getKosten();
+        }
+       // dd($i);
+        return $this->render('admin/instructeur_les_omzet.html.twig',  ['lessons' => $inst, 'i' => $i]
+        );
     }
 
 

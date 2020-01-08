@@ -44,7 +44,10 @@ class Lesson
      * @ORM\Column(type="string", length=255)
      */
     private $lesNaam;
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Registration", mappedBy="les")
+     */
+    private $registrations;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Training", inversedBy="lessons")

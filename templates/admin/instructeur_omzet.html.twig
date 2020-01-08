@@ -9,16 +9,20 @@
             <th>Les id</th>
             <th>Les naam</th>
             <th>Les locatie</th>
-            <th>Omzet</th>
             </thead>
+            // registrations met die instructeur
             {% for lesson in lessons %}
+
+
                 <tr>
                     <td>{{ lesson.id }}</td>
-                    <td>{{ lesson.lesnaam }}</td>
-                    <td>{{ lesson.location}}</td>
+                    <td>{{ lesson.lesNaam }}</td>
+                    <td> {{ lesson.location }}</td>
                 </tr>
+
             {% endfor %}
         </table>
+        <b>Omzet</b>: {{ i }}
 
     </div>
 {% endblock %}

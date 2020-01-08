@@ -3,40 +3,41 @@
 {% block body %}
     <div class="col-5"></div>
     <div class="col-3 m_auto">
-        <p class="p_text">Instructeur overzicht</p></div>
+        <p class="p_text">Les overzicht</p></div>
     <div class="col-12 m_auto">
         <table class="table">
-            <button><a style="color:black; text-decoration: none;" href="{{ path('instructeur_toevoegen') }}">Instructeur toevoegen</a></button>
             <thead>
-            <th>Voorvoegsel</th>
-            <th>Voornaan</th>
-            <th>Achternaam</th>
-            <th>Gender</th>
-            <th>Straat</th>
-            <th>Postcode</th>
-            <th>Plaats</th>
-            <th>Omzet</th>
+            <th>Naam</th>
+            <th>Datum</th>
+            <th>Tijdstip</th>
+            <th>Max. Personen</th>
             </thead>
-            {% for persoon in leden %}
-                {% if persoon.roles[0] == "ROLE_INSTRUCTEUR" %}
+            {% for les in les %}
                 <tr>
-                    <td> {{persoon.voorvoegsel}}</td>
-                    <td> {{ persoon.voornaam }}</td>
-                    <td> {{ persoon.achternaam }}</td>
-                    <td> {{ persoon.gender }}</td>
-                    <td> {{ persoon.straat }}</td>
-                    <td> {{ persoon.postcode }}</td>
-                    <td> {{ persoon.plaats }}</td>
-                    <td></td>
+                    <td>{{ les.id }}</td>
+                    <td> {{ les.lesNaam }}</td>
+                    <td> {{ les.date | date('d-m-Y') }}</td>
+                    <td> {{ les.time | date('H:i') }}</td>
+                    <td> {{ les.maxPersons }}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_wijzigen', {id: persoon.id}) }}">Wijzigen</a>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('instructeur_les_omzet', {id: les.id}) }}">Omzet</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('les_wijzigen', {id: les.id}) }}">Wijzigen</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color:white; text-decoration: none;"
+                                                           href="{{ path('deelnemer_overzicht', {id: les.id}) }}">Deelnemer lijst</a>
                         </button>
                     </td>
                     <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Instructeur<br> verwijderen
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Training verwijderen
                         </button>
 
                         <!-- Modal -->
@@ -56,30 +57,20 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"><a
                                                     style="color:white; text-decoration: none;"
-                                                    href="{{ path('instructeur_overzicht', {id: persoon.id}) }}">Nee</a>
+                                                    href="{{ path('les_overzicht', {id: les.id}) }}">Nee</a>
                                         </button>
                                         <button type="button" class="btn btn-primary"><a
                                                     style="color:white; text-decoration: none;"
-                                                    href="{{ path('instructeur_verwijderen', {id: persoon.id}) }}">Ja</a>
+                                                    href="{{ path('les_verwijderen', {id: les.id}) }}">Ja</a>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_les', {id: persoon.id}) }}">Les overzicht <br>per instructeur</a>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm"><a style="color:white; text-decoration: none;"
-                                                           href="{{ path('instructeur_omzet', {id: persoon.id}) }}">Omzet per<br> instructeur</a>
-                        </button>
-                    </td>
+
 
                 </tr>
-                {% endif %}
             {% endfor %}
             {#        {{ trainingen }}#}
         </table>
