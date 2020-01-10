@@ -88,7 +88,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         elseif($this->aci->isGranted('ROLE_INSTRUCTEUR')) {
-            $url = 'admin_dashboard';
+            $url = '/instructeur/index';
         }
 
         return new RedirectResponse($this->urlGenerator->generate($url));

@@ -58,6 +58,22 @@ class Lesson
      */
     private $instructeur;
 
+    /**
+     * @return mixed
+     */
+    public function getInstructeur()
+    {
+        return $this->instructeur;
+    }
+
+    /**
+     * @param mixed $instructeur
+     */
+    public function setInstructeur($instructeur): void
+    {
+        $this->instructeur = $instructeur;
+    }
+
 
 
     public function __construct()

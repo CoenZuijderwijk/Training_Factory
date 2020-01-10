@@ -21,11 +21,15 @@ class LessonType extends AbstractType
 
 
         $builder
-            ->add('lesNaam', EntityType::class, [
+            ->add('training', EntityType::class, [
                 'class' => Training::class,
                 'choice_label' => function(Training $training)  {
                     return sprintf('%s', $training->__toString());
-                } , 'label' => 'Les naam'
+                } , 'label' => 'Training    '
+            ])
+            ->add('les_naam', TextType::class, [
+                'attr' => ['class' => 'l_form'],
+                'label' => 'Les naam'
             ])
             ->add('time', TimeType::class, [
                 'placeholder' => 'Select a value',

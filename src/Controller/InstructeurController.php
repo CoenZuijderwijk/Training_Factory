@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Lesson;
+use App\Entity\Persoon;
 use App\Entity\task;
 use App\Form\Type\LessonType;
 use App\Form\Type\TaskType;
@@ -78,8 +79,9 @@ class InstructeurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $instr = $this->getUser();
+            $les->setInstructeur($instr);
             $les=$form->getData();
-
             $em=$this->getDoctrine()->getManager();
             $em->persist($les);
             $em->flush();

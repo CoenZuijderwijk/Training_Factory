@@ -1,23 +1,14 @@
 monolog:
+    channels: ['coen', 'devs']
     handlers:
+        custom_log:
+            type: stream
+            path: "%kernel.logs_dir%kernel.custom%.log"
+            level: notice
+        coen:
+            level:  debug
+            type:   stream
+            path:   '%kernel.logs_dir%/coen.log'
+            channels: [coen]
         main:
-            type: rotating_file
-            action_level: error
-            handler: nested
-            excluded_http_codes: [404, 405]
-        nested:
-            type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
-        console:
-            type: console
-            process_psr_3_messages: false
-            channels: ["!event", "!doctrine"]
-        deprecation:
-            type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.deprecations.log"
-        deprecation_filter:
-            type: filter
-            handler: deprecation
-            max_level: info
-            channels: ["php"]
+            channels: ['coen']

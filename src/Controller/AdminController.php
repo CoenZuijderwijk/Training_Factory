@@ -13,6 +13,7 @@ use App\Form\Type\InstructeurType;
 use App\Form\Type\PersoonType;
 use App\Form\Type\TaskType;
 use App\Form\Type\TrainingType;
+use App\Log\CustomLogger;
 use App\Repository\RegistrationRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Psr\Log\LoggerInterface;
+use App\Service\MessageGenerator;
 
 /**
   * Require ROLE_ADMIN for *every* controller method in this class.
@@ -31,10 +33,18 @@ use Psr\Log\LoggerInterface;
 class AdminController extends AbstractController
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
           * Require ROLE_ADMIN for only this controller method.
           *
           * @IsGranted("ROLE_ADMIN")
           */
+
+
+
 
     public function adminDashboard()
     {
@@ -48,10 +58,12 @@ class AdminController extends AbstractController
      * @Route("/admin/home", name="admin_home")
      */
 
-    public function homepage(LoggerInterface $logger) {
-        $username= $this->getUser()->getUsername();
+    public function homepage(MessageGenerator $logger, LoggerInterface $requestLogger) {
 
-        $logger->info($username . ' opened admin homepage');
+        $username= $this->getUser()->getUsername();
+        //$logger->adminHomepage($log);
+        $logger->logger->notice($username);
+        $requestLogger->notice("requestlogger admin homepage");
         return $this->render('admin/index.html.twig', [
         ]);
     }
