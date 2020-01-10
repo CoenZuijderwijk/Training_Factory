@@ -22,13 +22,18 @@
 <div class="container-fluid">
     <header>
         <img class="h_img img-fluid" style="height: 20vh;" src="{{ asset('img/nav_img.png') }}">
-        {% if user is defined %}
+        {% if user == false %}
             <p class="h_right">
                 <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;"
-                                               href="/logout">Uitloggen</a>
+                                               href="/login">Inloggen</a>
                 </button>
             </p>
         {% else %}
+            <p class="h_right">
+                <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;" href="/logout">uitloggen</a>
+                </button>
+            </p>
+        {% endif %}
             <p class="h_right">
                 <button class="btn btn-txt"><a style="color:#b30000; text-decoration: none;" href="/login">Inloggen</a>
                 </button>

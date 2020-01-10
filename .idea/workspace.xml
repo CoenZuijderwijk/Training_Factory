@@ -2,36 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c6108b4-aa4d-429f-86fb-e7233d874d83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200108110245.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Training_Factory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Training_Factory.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InstructeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstructeurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LedenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LedenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Lesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lesson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_les_omzet.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_les_omzet.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_les_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_toevoegen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_toevoegen.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/instructeur_wijzigen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/instructeur_wijzigen.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/leden_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/leden_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/les_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/lid_les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/lid_les_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/training_toevoegen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/training_toevoegen.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/training_wijzigen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/training_wijzigen.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bezoekers/bezoekers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/bezoekers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/locatie_contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/locatie_contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoekers/trainings_aanbod.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoekers/trainings_aanbod.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instructeur/instructeur.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/instructeur.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instructeur/les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instructeur/les_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/inschrijven.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/inschrijven.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/leden/inschrijven_les.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/inschrijven_les.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/leden.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/leden.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/les_overzicht.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/les_overzicht.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/leden/profiel_wijzigen.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/leden/profiel_wijzigen.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +157,9 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Ty66pPZZKlLpjbx27zNhZiGGW9" />
@@ -193,12 +181,12 @@
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Training_Factory\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Training_Factory\templates\bezoekers" />
       <recent name="C:\xampp\htdocs\Training_Factory\templates\leden" />
-      <recent name="C:\xampp\htdocs\Training_Factory\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Training_Factory\templates" />
     </key>
   </component>
@@ -253,6 +241,9 @@
       <workItem from="1578305708270" duration="612000" />
       <workItem from="1578383131781" duration="7635000" />
       <workItem from="1578472733618" duration="13008000" />
+      <workItem from="1578488971436" duration="398000" />
+      <workItem from="1578555590739" duration="7490000" />
+      <workItem from="1578641225527" duration="185000" />
     </task>
     <servers />
   </component>

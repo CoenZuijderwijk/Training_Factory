@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Psr\Log\LoggerInterface;
 
 /**
   * Require ROLE_ADMIN for *every* controller method in this class.
@@ -47,8 +48,10 @@ class AdminController extends AbstractController
      * @Route("/admin/home", name="admin_home")
      */
 
-    public function homepage() {
+    public function homepage(LoggerInterface $logger) {
+        $username= $this->getUser()->getUsername();
 
+        $logger->info($username . ' opened admin homepage');
         return $this->render('admin/index.html.twig', [
         ]);
     }
