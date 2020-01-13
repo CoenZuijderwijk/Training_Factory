@@ -21,6 +21,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 
 
+
 class LedenController extends AbstractController
 {
 // route voor de homepagina van de leden

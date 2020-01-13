@@ -1,14 +1,12 @@
 monolog:
-    channels: ['coen', 'devs']
     handlers:
         custom_log:
             type: stream
             path: "%kernel.logs_dir%kernel.custom%.log"
             level: notice
-        coen:
-            level:  debug
-            type:   stream
-            path:   '%kernel.logs_dir%/coen.log'
-            channels: [coen]
-        main:
             channels: ['coen']
+        coen:
+            type: stream
+            path: "%kernel.logs_dir%/coen.log"
+            level: debug
+            channels: ["coen"]

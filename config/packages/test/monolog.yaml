@@ -1,7 +1,12 @@
 monolog:
+    channels: ['coen']
     handlers:
         main:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
             channels: ["!event"]
+        coen:
+            type: stream
+            path: "%kernel.logs_dir%/coen.log"
+            level: debug

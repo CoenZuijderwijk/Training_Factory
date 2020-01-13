@@ -30,11 +30,9 @@ use App\Service\MessageGenerator;
   */
 
 
+
 class AdminController extends AbstractController
 {
-    /**
-     * @var LoggerInterface
-     */
     private $logger;
 
     /**
@@ -43,7 +41,10 @@ class AdminController extends AbstractController
           * @IsGranted("ROLE_ADMIN")
           */
 
-
+    public function __construct(LoggerInterface $coenLogger)
+    {
+        $this->logger = $coenLogger;
+    }
 
 
     public function adminDashboard()
@@ -58,12 +59,11 @@ class AdminController extends AbstractController
      * @Route("/admin/home", name="admin_home")
      */
 
-    public function homepage(MessageGenerator $logger, LoggerInterface $requestLogger) {
+    public function homepage() {
+        $user = $this->getUser()->getUsername();
+        $user_id = $this->getUser()->getId();
+        $this->logger->debug( "user opened admin home page", ["user" => $user, "user_ID" => $user_id]);
 
-        $username= $this->getUser()->getUsername();
-        //$logger->adminHomepage($log);
-        $logger->logger->notice($username);
-        $requestLogger->notice("requestlogger admin homepage");
         return $this->render('admin/index.html.twig', [
         ]);
     }
@@ -72,7 +72,10 @@ class AdminController extends AbstractController
      * @Route("/admin/trainingen")
      */
 
-    public function trainingen() {
+    public function trainingen(LoggerInterface $coenLogger) {
+        $user = $this->getUser()->getUsername();
+        $user_id = $this->getUser()->getId();
+        $coenLogger->debug( "user: ". $user . " with id: " . $user_id . " opened admin homepage");
 
         return $this->render('admin/trainingen.html.twig', [
         ]);
@@ -83,7 +86,7 @@ class AdminController extends AbstractController
      * @Route("/admin/training_overzicht", name="training_overzicht")
      */
 
-    public function training_overzicht() {
+    public function training_overzicht(LoggerInterface $coenLogger) {
         $entityManager = $this->getDoctrine()->getManager();
 
         $trainingen = $entityManager->getRepository(Training::class)->findAll();
@@ -97,7 +100,7 @@ class AdminController extends AbstractController
      * @Route("/admin/training_verwijderen/{id}", name="training_verwijderen")
      */
 
-    public function training_verwijderen($id) {
+    public function training_verwijderen(LoggerInterface $coenLogger, $id) {
         $entityManager = $this->getDoctrine()->getManager();
 
         $training_d = $entityManager->getRepository(Training::class)->find($id);
@@ -114,7 +117,7 @@ class AdminController extends AbstractController
      * @Route("/admin/training_wijzigen/{id}", name="training_wijzigen")
      */
 
-    public function training_wijzigen(Request $request, $id) {
+    public function training_wijzigen(LoggerInterface $coenLogger, Request $request, $id) {
         $entityManager = $this->getDoctrine()->getManager();
 
         $training = $entityManager->getRepository(Training::class)->find($id);
@@ -140,7 +143,7 @@ class AdminController extends AbstractController
      * @Route("/admin/add_training")
      */
 
-    public function add_training(Request $request)
+    public function add_training(LoggerInterface $coenLogger, Request $request)
     {
         $training = new Training();
 
@@ -166,7 +169,7 @@ class AdminController extends AbstractController
      * @Route("/admin/leden_overzicht", name="leden_overzicht")
      */
 
-    public function leden_overzicht() {
+    public function leden_overzicht(LoggerInterface $coenLogger) {
         $entityManager = $this->getDoctrine()->getManager();
 
         $leden = $entityManager->getRepository(Persoon::class)->findAll();
@@ -181,7 +184,7 @@ class AdminController extends AbstractController
      * @Route("/admin/disable_lid/{id}", name="lid_disable")
      */
 
-    public function disable_lid($id) {
+    public function disable_lid(LoggerInterface $coenLogger, $id) {
         $entityManager = $this->getDoctrine()->getManager();
 
         $leden = $entityManager->getRepository(Persoon::class)->find($id);

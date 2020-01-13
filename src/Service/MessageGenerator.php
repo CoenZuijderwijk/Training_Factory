@@ -9,12 +9,16 @@ use Psr\Log\LoggerInterface;
 
 class MessageGenerator
 {
-    private $customLogger;
+    private $logger;
 
-    public function __construct(LoggerInterface $customLogger)
+    public function __construct(LoggerInterface $coenLogger)
     {
-      $this->logger = $customLogger;
-      $customLogger->notice("test");
+      $this->logger = $coenLogger;
+    }
+
+    public function testlog()
+    {
+        $this->logger->info("MessageGenerator testlog");
     }
 
 }

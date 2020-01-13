@@ -32,10 +32,11 @@ class CustomLogger
         return $this->logger;
     }
 
-    public function adminHomepage(LoggerInterface $logger)
+    public function adminHomepage(LoggerInterface $coenLogger, $user)
     {
-        $this->logger = $logger;
-        $logger->notice("customlogger adminHomepage");
+        $this->logger = $coenLogger;
+
+        $coenLogger->notice("customlogger adminHomepage" . $user);
     }
 
 }
